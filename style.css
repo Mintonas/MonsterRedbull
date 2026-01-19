@@ -10,31 +10,104 @@ body {
     padding: 20px 40px;
     background-color: #2b2b2b;
   }
-  
+
   .title {
-    color: white;
-    font-size: 25px;
+    font-size: 32px;
     font-family: cursive;
-    padding: 10px;
-    background-color: #3a3838;
-    margin-right: auto;
+    padding: 16px 24px;
+    color: white;
+    margin-right:50px;
+    background: linear-gradient(
+      270deg,
+      #ff6b6b,
+      #feca57,
+      #48dbfb,
+      #1dd1a1
+    );
+    background-size: 800% 800%;
+    border-radius: 10px;
+    animation: gradientMove 8s ease infinite;
+  }
+  
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
   
   .wowie {
     color: white;
-    font-size: 20px;
+    font-size: 18px;
+    padding: 12px 22px;
     cursor: pointer;
-    padding: 10px;
-    background-color: #3a3838;
+    border: none;
     border-radius: 30px;
-    transition: scale 150ms ease;
+    margin-left:100px;
+  
+    background: linear-gradient(
+      270deg,
+      #ff6b6b,
+      #feca57,
+      #48dbfb,
+      #1dd1a1
+    );
+    background-size: 600% 600%;
+  
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+    animation: wowieGradient 8s ease infinite;
   }
   
   .wowie:hover {
-    color: #00ff00;
-    scale: 1.3;
+    transform: scale(1.15);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
   }
   
+  .wowie:active {
+    transform: scale(1.05);
+  }
+  
+  @keyframes wowieGradient {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+.Instagram {
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  }
+  
+  .RedWinter {
+    position: absolute;
+    top: 200px;
+    left: -80px;
+    width: 200px;
+    transform-origin: center;
+    animation: slideRotate 3s forwards ease-out;
+  }
+
+  .RedRed {
+    position: absolute;
+    top: 200px;
+    left: -80px;
+    width: 200px;
+    transform-origin: center;
+    animation: slideRotate 3s forwards ease-out;
+  }
+
+  .RedBull {
+    position: absolute;
+    top: 200px;
+    left: -80px;
+    width: 200px;
+    transform-origin: center;
+    animation: slideRotate 3s forwards ease-out;
+  }
+
   .Hawaiian {
   position: absolute;
   top: 200px;
@@ -43,7 +116,7 @@ body {
   transform-origin: center;
   animation: slideRotate 3s forwards ease-out;
 }
-
+  
 .MangoLoco {
     position: absolute;
     top: 200px;
@@ -75,6 +148,21 @@ body {
 .VitMonster {
     --finalX: 55vw;
     animation-delay: 0.4s;
+  }
+
+  .RedBull {
+    --finalX: 40vw;
+    animation-delay: 0.6s;
+  }
+
+  .RedRed {
+    --finalX: 25vw;
+    animation-delay: 0.8s;
+  }
+
+  .RedWinter {
+    --finalX: 10vw;
+    animation-delay: 1s;
   }
 
 /* Animation */
