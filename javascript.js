@@ -1,0 +1,22 @@
+let navigation = document.getElementById("Navigation");
+
+navigation.addEventListener("mouseenter", () => {
+    navigation.style.opacity="1"
+});
+
+navigation.addEventListener("mouseleave", () => {
+    navigation.style.opacity="0"
+});
+
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+        if(entry.isIntersecting){
+            console.log(entry.target)
+            entry.target.classList.add("show")
+        }else{
+            entry.target.classList.remove("show")
+        }
+    })
+}, {})
+const elementsToObserve = document.querySelectorAll(".produktbild, .product-button, .one, .two, .buttonOne, .buttonTwo, .texting, .texting2")
+elementsToObserve.forEach(el => observer.observe(el))

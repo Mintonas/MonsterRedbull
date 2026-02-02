@@ -14,6 +14,11 @@ body {
 }
 
 header {
+  transition: all 0.3s ease;
+  opacity:0;
+  transform:translateY(-10px);
+  transition: all 0.3s ease 0.2s;
+  opacity:1;
   display: grid;
   grid-template-columns: 4fr 1fr;
   background-color: #2b2b2b;
@@ -24,11 +29,10 @@ header {
   display:flex;
   justify-content: space-around;
   align-items: center;
-  font-size: clamp(10px,  2vw, 32px);
 }
 
 .title {
-  font-size: clamp(10px,  2vw, 32px);
+  font-size: clamp(16px,  2vw, 32px);
   font-family: cursive;
   padding: 16px 24px;
   color: white;
@@ -46,7 +50,7 @@ header {
 
 .wowie {
   color: white;
-  font-size: 18px;
+  font-size: clamp(6px,  2vw, 18px);
   padding: 12px 22px;
   cursor: pointer;
   border: none;
@@ -69,7 +73,6 @@ header {
 }
 
 .social-icons {
-  /* position: fixed; */
   top: 20px;
   right: 20px;
   display: flex;
@@ -80,32 +83,23 @@ header {
 }
 
 .social-icons img {
-  width: 70px;
-  height: 70px;
+  width: clamp(40px,  4vw, 70px);;
+  height: clamp(40px,  4vw, 70px);;
   object-fit: contain;
 }
 
 .product-container {
-  display: flex;
+  display:grid;
   flex-wrap: wrap;
   justify-content: center;
   gap: 40px;
-  padding: 80px 20px; 
+  padding: 80px 20px;
 }
 
 .product {
-  width: 200px;
-  text-align: center;
-}
-
-.produktbild {
-  width: 100%;
-  animation: slideRotate 1s forwards ease-out;
-}
-
-@keyframes slideRotate {
-  from { transform: rotate(-20deg); opacity: 0; }
-  to { transform: rotate(0deg); opacity: 1; }
+  width: 500px;
+  display: flex;
+  align-items: center;
 }
 
 .product-button {
@@ -113,13 +107,12 @@ header {
   background-size: 600% 600%;
   color: white;
   font-size: 18px;
-  padding: 15px 35px;
-  margin-top: 15px;
+  padding: 25px 50px;
+  margin-top: 20px;
   cursor: pointer;
   border: none;
   border-radius: 30px;
-  animation: product-buttonGradient 8s ease infinite, fadeIn 2s ease forwards;
-  opacity: 0;
+  animation: product-buttonGradient 8s ease infinite;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -128,16 +121,118 @@ header {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
 }
 
-@keyframes fadeIn { to { opacity: 1; } }
 @keyframes product-buttonGradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-.button1 { animation-delay: 0s; }
-.button2 { animation-delay: 0.2s; }
-.button3 { animation-delay: 0.4s; }
-.button4 { animation-delay: 0.6s; }
-.button5 { animation-delay: 0.8s; }
-.button6 { animation-delay: 1s; }
+.one{
+width:450px;
+opacity:0;
+filter:blur(5px);
+transform: translateX(-100%);
+transition: all 1s;
+}
+
+.one.show{
+  opacity:1;
+  filter:blur(0);
+  transform:translateX(100%);
+}
+
+.two{
+  width: 450px;
+  opacity:0;
+  filter:blur(5px);
+  transform: translateX(100%);
+  transition: all 1s;
+  }
+  
+  .two.show{
+  opacity:1;
+  filter:blur(0);
+  transform:translateX(-100%);
+  }
+
+  .buttonOne{
+    opacity:0;
+    filter:blur(5px);
+    transform: translateX(-370%);
+    transition: all 1s;
+    }
+
+  .buttonOne.show{
+    opacity:1;
+    filter:blur(0);
+    transform:translateX(630%);
+  }
+
+  .buttonTwo{
+    opacity:0;
+    filter:blur(5px);
+    transform: translateX(370%);
+    transition: all 1s;
+  }
+
+  .buttonTwo.show{
+    opacity:1;
+    filter:blur(0);
+    transform:translateX(-215%);
+  }
+
+  .one,
+.two {
+  flex-shrink: 0;
+}
+
+.product {
+  width: 700px;
+}
+
+  .text {
+    color: white;
+    flex: 1; 
+    max-width: none;
+    white-space: normal;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    padding: 20px;              
+    border-radius: 20px; 
+    background: linear-gradient(270deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1);
+    background-size:800px,800px;
+    animation: textcolor 8s ease infinite;
+  }
+
+  .texting {
+    opacity:0;
+    filter:blur(5px);
+    transform:translateX(200%);
+    transition: all 1s;
+  }
+
+  .texting.show {
+    opacity: 1;
+    filter: blur(0);
+    transform:translateX(-10%);
+  }
+
+  .texting2 {
+    opacity:0;
+    filter:blur(5px);
+    transform: translateX(-200%);
+    transition: all 1s;
+  }
+
+  .texting2.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(10%);
+  }
+
+  @keyframes textcolor {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
