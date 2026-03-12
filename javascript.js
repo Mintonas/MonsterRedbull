@@ -14,7 +14,7 @@ const elementsToObserve = document.querySelectorAll(".produktbild, .product-butt
 
 elementsToObserve.forEach(el => observer.observe(el))
 
-/* ---------------- CART SYSTEM ---------------- */
+/* CART SYSTEM */
 
 let cart = []
 

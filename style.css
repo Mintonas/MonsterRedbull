@@ -177,42 +177,39 @@ display:block;
 }
 
 .product {
-  width: 700px;
-  max-width: 80vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+width: 700px;
+max-width: 80vw;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
 
 .product > div{
-  display:flex;
-  justify-content:center;
-  width:100%;
+display:flex;
+justify-content:center;
+width:100%;
 }
 
 .product-button {
-  font-family: 'Arial Black', Impact, sans-serif;
-  border: 2px solid #1aff00;
-  border-radius: 999px;
-  background: #050505;
-  color: white;
-  font-size: 18px;
-  padding: 25px 50px;
-  cursor: pointer;
-  border: none;
-  border-radius: 30px;
-  box-shadow:
-    0 0 10px rgba(26, 255, 0, 0.35),
-    inset 0 0 6px rgba(26, 255, 0, 0.2);
-  transition: transform 0.15s ease, box-shadow 0.15s ease
+font-family: 'Arial Black', Impact, sans-serif;
+border: 2px solid #1aff00;
+border-radius: 999px;
+background: #050505;
+color: white;
+font-size: 18px;
+padding: 25px 50px;
+cursor: pointer;
+border: none;
+border-radius: 30px;
+box-shadow: 0 0 10px rgba(26, 255, 0, 0.35), inset 0 0 6px rgba(26, 255, 0, 0.2);
+transition: transform 0.15s ease, box-shadow 0.15s ease
 }
 
 .product-button:hover {
-  transform: scale(1.1);
-  background: #0b1f0f;
-  box-shadow:
-    0 0 16px rgba(26, 255, 0, 0.8),
-    inset 0 0 10px rgba(26, 255, 0, 0.35);
+transform: scale(1.1);
+background: #0b1f0f;
+box-shadow:
+0 0 16px rgba(26, 255, 0, 0.8), inset 0 0 10px rgba(26, 255, 0, 0.35);
 }
 
 .product-button:active {
@@ -292,19 +289,14 @@ transform:translateX(0);
   max-width: 650px;
   text-align: left;
 
-  box-shadow:
-    inset 0 0 12px rgba(26, 255, 0, 0.15),
-    0 6px 14px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 0 12px rgba(26, 255, 0, 0.15), 0 6px 14px rgba(0, 0, 0, 0.6);
 }
 
 
 .texting {
   opacity: 0;
   transform: translateX(200px);
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s ease,
-    filter 0.8s ease;
+  transition: opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease;
 }
 
 .texting.show {
@@ -315,10 +307,7 @@ transform: translateX(0);
   .texting2 {
     opacity: 0;
     transform: translateX(-30px);
-    transition:
-      opacity 0.8s ease,
-      transform 0.8s ease,
-      filter 0.8s ease;
+    transition: opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease;
   }
   
   .texting2.show {
