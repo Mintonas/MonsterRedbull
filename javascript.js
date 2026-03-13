@@ -23,39 +23,55 @@ const cartCount = document.getElementById("cartCount")
 const cartPanel = document.getElementById("cartPanel")
 const cartButton = document.getElementById("cartButton")
 const closeCart = document.getElementById("closeCart")
+const notification = document.getElementById("cartNotification")
 
 const buttons = document.querySelectorAll(".product-button")
 
-for(let i=0, n=buttons.length; i<n; i++) {
-    let button = buttons[i];
-    button.addEventListener("click", ()=>{  
+buttons.forEach(button => {
 
-        let product = button.closest(".product-group").querySelector(".product");
-        console.log(product)
-        let name = product.querySelector("p").innerText.slice(0,27)
-        
-        cart.push(name)
+    button.addEventListener("click", () => {
+
+        let name = button.dataset.name
+
+        let existing = cart.find(item => item.name === name)
+
+        if(existing){
+            existing.quantity += 1
+        }else{
+            cart.push({
+                name: name,
+                quantity: 1
+            })
+        }
 
         updateCart()
+        showNotification(name)
+
     })
-}
+
+})
 
 function updateCart(){
 
     cartItems.innerHTML=""
 
     cart.forEach((item,i)=>{
-        const li=document.createElement("li")
 
-        li.innerHTML=`
-        ${item}
+        const li = document.createElement("li")
+
+        li.innerHTML = `
+        ${item.name} (${item.quantity}x)
         <button onclick="removeItem(${i})">X</button>
         `
 
         cartItems.appendChild(li)
+
     })
 
-    cartCount.innerText=cart.length
+    let total = 0
+    cart.forEach(item => total += item.quantity)
+
+    cartCount.innerText = total
 }
 
 function removeItem(index){
@@ -70,3 +86,14 @@ cartButton.addEventListener("click",()=>{
 closeCart.addEventListener("click",()=>{
     cartPanel.classList.remove("open")
 })
+
+function showNotification(name){
+
+    notification.innerText = `✅ ${name} added to cart`
+    notification.classList.add("show")
+
+    setTimeout(()=>{
+        notification.classList.remove("show")
+    },2000)
+
+}
