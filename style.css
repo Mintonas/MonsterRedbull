@@ -79,7 +79,13 @@ display:block;
   top:0;
   width:300px;
   height:100%;
-  background:#111;
+  background: linear-gradient(
+    135deg,
+    #0a0a0a 10%,
+    #0f3d1f 50%,
+    #11632d 70%,
+    #1aff00 100%
+  );
   color:white;
   padding:20px;
   transition:0.3s;
