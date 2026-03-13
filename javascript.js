@@ -26,17 +26,19 @@ const closeCart = document.getElementById("closeCart")
 
 const buttons = document.querySelectorAll(".product-button")
 
-buttons.forEach((button,index)=>{
-    button.addEventListener("click",()=>{
+for(let i=0, n=buttons.length; i<n; i++) {
+    let button = buttons[i];
+    button.addEventListener("click", ()=>{  
 
-        const product = button.closest(".product")
-        const name = product.querySelector("p").innerText.slice(0,25)
-
+        let product = button.closest(".product-group").querySelector(".product");
+        console.log(product)
+        let name = product.querySelector("p").innerText.slice(0,27)
+        
         cart.push(name)
 
         updateCart()
     })
-})
+}
 
 function updateCart(){
 

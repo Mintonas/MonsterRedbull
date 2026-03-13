@@ -192,12 +192,12 @@ width:100%;
 
 .product-button {
 font-family: 'Arial Black', Impact, sans-serif;
-border: 2px solid #1aff00;
 border-radius: 999px;
 background: #050505;
 color: white;
 font-size: 18px;
 padding: 25px 50px;
+margin-top: 25px;
 cursor: pointer;
 border: none;
 border-radius: 30px;
