@@ -9,49 +9,58 @@
   <link rel="icon" href="c6f8c763-e547-4280-8a98-d3a022c79d46.png">
 </head>
 
-<div id="cartNotification" class="cart-notification">
-  ✅ Added to cart
-</div>
-
 <body>
+
+<div id="cartNotification" class="cart-notification"> ✅ Added to cart</div>
+
+<div id="overlay"></div>
 
 <header id="Navigation">
   <nav class="RakEld">
-    <img class="main-icon" src="c6f8c763-e547-4280-8a98-d3a022c79d46.png">
+    <img alt="Icon" class="main-icon" src="c6f8c763-e547-4280-8a98-d3a022c79d46.png">
     <div class="title">MonsterRedbull</div>
     <a href="#events" class="wowie">Events</a>
     <a href="#discount" class="wowie">Discount codes</a>
     <a href="#Down" class="wowie">About us</a>
   </nav>
 
-  <div class="cart-wrapper">
-    <svg id="cartButton" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
-    </svg>
-    
-    <span id="cartCount">0</span>
-  </div>
-
-  <div id="cartPanel" class="cart-panel">
-    <h2>Your Cart</h2>
-  
-    <ul id="cartItems"></ul>
-  
-    <button id="closeCart">Close</button>
-  </div>
-
-  <div class="social-icons">
-    <img src="Instagram.png" alt="Instagram">
-    <img src="TikTok.png" alt="TikTok">
-    <img src="youtube.png" alt="YouTube">
-  </div>
 </header>
+
+<div id="cartPanel" class="cart-panel">
+  <h2>Your Cart</h2>
+
+  <ul id="cartItems"></ul>
+
+  <button id="closeCart">Close</button>
+</div>
+
+<div class="hamburger" id="hamburger">☰</div>
+
+<div class="side-menu" id="sideMenu">
+
+  <h2>Menu</h2>
+
+  <button id="menuCartBtn">🛒 Cart (<span id="menuCartCount">0</span>)</button>
+
+  <a href="#events">Events</a>
+  <a href="#discount">Discount</a>
+  <a href="#Down">About</a>
+
+  <div class="menu-socials">
+    <img src="Instagram.png" alt="Instagram">
+    <img src="tik-tok.png" alt="TikTok">
+    <img src="youtube.png" alt="YouTube">
+    <img src="facebook.png" alt="Facebook">
+    
+  </div>
+
+</div>
 
 <div class="product-container">
   <div class="product-group">
     <div class="product">
       <p class="text texting2">Hawaiian Monster Lava Roar Hawaiian Monster Lava Roar is a wild fusion of tropical island energy and volcanic power. Inspired by Hawaii’s untamed landscapes, it delivers an intense, thrilling experience with hints of exotic fruit and a fiery, smoky edge. Packed with raw strength, jungle spirit, and unstoppable energy, Lava Roar keeps you alert and ready for adventure while capturing the fierce, mystical essence of the islands. Perfect for thrill-seekers, night explorers, and anyone craving the wild force of Hawaii in every sip.</p>
-      <img class="produktbild one" src="Hawaiian.png">
+      <img alt="Hawaiian" class="produktbild one" src="Hawaiian.png">
       <button class="product-button buttonOne" data-name="Hawaiian Monster Lava Roar">Add to cart</button>
     </div>
   </div>
@@ -62,7 +71,7 @@
   <div class="product-group">
     <div class="product">
       <p class="text texting">Monster Energy Mango Loco is a bold fusion of juicy mango flavor with a smooth tropical twist. Inspired by the vibrant spirit of Día de los Muertos, it delivers a sweet, refreshing taste balanced with Monster’s signature energy blend. Packed with caffeine, B-vitamins, and taurine, Mango Loco keeps you energized and focused while tasting like a tropical escape. Perfect for hot days, long nights, and anyone who wants powerful energy with a deliciously exotic flavor. </p>
-        <img class="produktbild two" src="MangoLoco.png">
+        <img alt="MangoLoco" class="produktbild two" src="MangoLoco.png">
         <button class="product-button buttonTwo" data-name="Monster Energy Mango Loco">Add to cart</button>
     </div>
   </div>
@@ -73,7 +82,7 @@
   <div class="product-group">
     <div class="product">
       <p class="text texting2">Monster Energy White Ultra delivers a crisp, refreshing citrus flavor with a smooth finish and zero sugar. Light, clean, and easy to drink, it provides the energy boost you expect from Monster without the heavy sweetness. Packed with caffeine, B-vitamins, and taurine, White Monster is perfect for long days, workouts, gaming sessions, or whenever you need focus and endurance. Bold energy, clean taste, and no sugar — the ultimate choice for staying sharp and refreshed.</p>
-      <img class="produktbild one" src="VitMonster.png">
+      <img alt="VitMonster" class="produktbild one" src="VitMonster.png">
       <button class="product-button buttonOne" data-name="Monster Energy White Ultra">Add to cart</button>
     </div>
   </div>
@@ -84,7 +93,7 @@
   <div class="product-group">
     <div class="product">
       <p class="text texting">Red Bull Original Taste is a classic energy boost designed to keep you alert and energized whenever you need it. With its iconic crisp and slightly sweet flavor, it delivers a refreshing taste combined with Red Bull’s signature energy blend of caffeine, B-vitamins, and taurine. Perfect for long days, intense workouts, or late nights, Red Bull Original gives you the mental sharpness and stamina to power through anything while staying light and refreshing on the palate.</p>
-      <img class="produktbild two" src="Redbull.png">
+      <img alt="Redbull" class="produktbild two" src="Redbull.png">
       <button class="product-button buttonTwo" data-name="Red Bull Original">Add to cart</button>
     </div>
   </div>
@@ -96,7 +105,7 @@
   <div class="product-group">
     <div class="product">
       <p class="text texting2">Red Bull Melancia Edition is a bold blast of juicy watermelon flavor with Red Bull’s signature energy punch. Sweet, refreshing, and packed with caffeine, B-vitamins, and taurine, it keeps you sharp, focused, and unstoppable. Perfect for hot days, long nights, and anyone ready to power through life with a vibrant, fruity energy boost.</p>
-      <img class="produktbild one" src="RedRed.png">
+      <img alt="RedWinter" class="produktbild one" src="RedRed.png">
       <button class="product-button buttonOne" data-name="Red Bull Malancia">Add to cart</button>
     </div>
   </div>
@@ -107,7 +116,7 @@
   <div class="product-group">
     <div class="product">
       <p class="text  texting">Red Bull Winter Edition delivers a crisp, cool burst of winter-inspired flavor with Red Bull’s signature energy boost. Packed with caffeine, B-vitamins, and taurine, it keeps you alert, focused, and unstoppable through long nights and chilly days. Perfect for anyone craving a refreshing, invigorating energy boost with a frosty, bold twist.</p>
-      <img class="produktbild two" src="RedWinter.png">
+      <img alt="RedWinter" class="produktbild two" src="RedWinter.png">
       <button class="product-button buttonTwo" data-name="Red Bull Winter Edition">Add to cart</button>
     </div>
   </div>
