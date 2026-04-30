@@ -9,8 +9,8 @@ error_reporting(E_ALL);
 $conn = new mysqli("localhost","Mintonas","Balionas","Diddy_Club");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $Rankings = $_POST["Rankings"]
-    $Sizes = $_POST["Sizes"]
+    $Rankings = $_POST["Rankings"];
+    $Sizes = $_POST["Sizes"];
 
     $sql = "INSERT INTO formdata (Rankings, description) VALUES ( $Rankings, $Sizes)";
 
