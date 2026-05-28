@@ -4,18 +4,36 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+$conn = new mysqli("localhost", "Mintonas", "Balionas", "Diddy_Club");
 
-
-$conn = new mysqli("localhost","Mintonas","Balionas","Diddy_Club");
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $Rankings = $_POST["Rankings"];
-    $Sizes = $_POST["Sizes"];
-
-    $sql = "INSERT INTO formdata (Rankings, description) VALUES ( $Rankings, $Sizes)";
-
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
+$message = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $Rankings = trim($_POST["Rankings"]);
+    $Sizes = trim($_POST["Sizes"]);
+
+    if (!empty($Rankings) && !empty($Sizes)) {
+
+        $stmt = $conn->prepare("INSERT INTO formdata (Rankings, description) VALUES (?, ?)");
+        $stmt->bind_param("ss", $Rankings, $Sizes);
+
+   
+        if ($stmt->execute()) {
+            $message = "<p style='color: green;'>Data saved successfully!</p>";
+        } else {
+            $message = "<p style='color: red;'>Error: " . $stmt->error . "</p>";
+        }
+        
+        $stmt->close();
+    } else {
+        $message = "<p style='color: red;'>Please fill out all fields.</p>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,11 +44,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Document</title>
 </head>
 <body>
-<form method="POST">
-    Titel: <input type="text" name="Rankings" required><br><br>
-    Beskrivning:<br>
-    <textarea name="Sizes" rows="5" cols="40"></textarea><br><br>
-    <input type="submit" value="Skicka">
-</form>
+
+    <?php echo $message; ?>
+
+    <form method="POST">
+        Titel: <input type="text" name="Rankings" required><br><br>
+        Beskrivning:<br>
+        <textarea name="Sizes" rows="5" cols="40" required></textarea><br><br>
+        <input type="submit" value="Skicka">
+    </form>
 </body>
 </html>

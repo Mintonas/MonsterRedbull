@@ -1,0 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    // Not logged in? Kick them out to the login page
+    header("Location: login.php");
+    exit;
+}
+
+echo "Welcome to the club, " . $_SESSION['username'] . "!";
+?>
