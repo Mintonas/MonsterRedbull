@@ -66,8 +66,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         Namn: <input type="text" name="Names" required><br><br>
         Ålder: <input type="text" name="Ages" required><br><br>
         Titel: <input type="text" name="Rankings" required><br><br>
-        Beskrivning:<br>
-        <textarea name="Sizes" rows="5" cols="40" required></textarea><br><br>
+        
+        Storlek: <input type="text" name="Sizes" required><br><br>
+        
         <input type="submit" value="Skicka">
     </form>
 
