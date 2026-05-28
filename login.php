@@ -1,6 +1,6 @@
 <?php
 
-// Inside your login PHP logic:
+
 $username = $_POST['username'];
 $password = $_POST['password'];
 
@@ -10,14 +10,14 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($user = $result->fetch_assoc()) {
-    // Verify the password against the stored hash
+
     if (password_verify($password, $user['password'])) {
-        // Start the session and log them in!
+
         session_start();
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $username;
         
-        header("Location: dashboard.php"); // Redirect to a protected page
+        header("Location: dashboard.php"); 
         exit;
     } else {
         echo "Invalid password.";
