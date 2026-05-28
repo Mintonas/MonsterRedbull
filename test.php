@@ -11,27 +11,32 @@ if ($conn->connect_error) {
 
 $message = ""; 
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
 
-    $Rankings = trim($_POST["Rankings"]);
-    $Sizes = trim($_POST["Sizes"]);
-    $Names = trim($_POST["Names"]);
-    $Ages = trim($_POST["Ages"]);
-
-    if (!empty($Rankings) && !empty($Sizes) && !empty($Names) && !empty($Ages)) {
+    if (isset($_POST["Rankings"], $_POST["Sizes"], $_POST["Names"], $_POST["Ages"])) {
         
-        $stmt = $conn->prepare("INSERT INTO Listing (Rankings, Sizes, Names, Ages) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $Rankings, $Sizes, $Names, $Ages);
+        $Rankings = trim($_POST["Rankings"]);
+        $Sizes = trim($_POST["Sizes"]);
+        $Names = trim($_POST["Names"]);
+        $Ages = trim($_POST["Ages"]);
 
-        if ($stmt->execute()) {
-            $message = "<p style='color: green;'>Data saved successfully!</p>";
+        if (!empty($Rankings) && !empty($Sizes) && !empty($Names) && !empty($Ages)) {
+            
+            $stmt = $conn->prepare("INSERT INTO Listing (Rankings, Sizes, Names, Ages) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $Rankings, $Sizes, $Names, $Ages);
+
+            if ($stmt->execute()) {
+                $message = "<p style='color: green;'>Data saved successfully!</p>";
+            } else {
+                $message = "<p style='color: red;'>Error: " . $stmt->error . "</p>";
+            }
+            
+            $stmt->close();
         } else {
-            $message = "<p style='color: red;'>Error: " . $stmt->error . "</p>";
+            $message = "<p style='color: red;'>Please fill out all fields.</p>";
         }
-        
-        $stmt->close();
-    } else {
-        $message = "<p style='color: red;'>Please fill out all fields.</p>";
     }
 }
 ?>
@@ -49,14 +54,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <form method="POST">
         Namn: <input type="text" name="Names" required><br><br>
-
         Ålder: <input type="text" name="Ages" required><br><br>
-
         Titel: <input type="text" name="Rankings" required><br><br>
-        
         Beskrivning:<br>
         <textarea name="Sizes" rows="5" cols="40" required></textarea><br><br>
-        
         <input type="submit" value="Skicka">
     </form>
 </body>
