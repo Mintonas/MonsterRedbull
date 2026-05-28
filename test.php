@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($Rankings) && !empty($Sizes)) {
 
-        $stmt = $conn->prepare("INSERT INTO Listings (Rankings, description) VALUES (?, ?)");
+        $stmt = $conn->prepare("INSERT INTO Listing (Rankings, description) VALUES (?, ?)");
         $stmt->bind_param("ss", $Rankings, $Sizes);
 
    
