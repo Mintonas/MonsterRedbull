@@ -35,12 +35,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     '0' => 'o',
                     '1' => 'i',
                     '!' => 'i',
+                    '2' => 'z',
                     '3' => 'e',
                     '4' => 'a',
                     '@' => 'a',
                     '5' => 's',
                     '$' => 's',
-                    '7' => 't'
+                    '6' => 'g',
+                    '7' => 't',
+                    '8' => 'b',
+                    '9' => 'g'
                 ];
         
                 $normalized = strtr($normalized, $replacements);
@@ -159,23 +163,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmt->close();
                 }
             }
-        }
-
-            // ? - placeholder incase sql injection
-            $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-            //Attaches values to place holders (ss) for string
-            $stmt->bind_param("ss", $username, $hashed_password);
-
-            try {
-                if ($stmt->execute()) {
-                    $message = "<p style='color: green;'>Registration successful! <a href='login.php'>Login here</a></p>";
-                }
-            } catch (mysqli_sql_exception $e) {
-                $message = "<p style='color: red;'>Username already taken. Try another one!</p>";
-            }
-            $stmt->close();
-        } else {
-            $message = "<p style='color: red;'>Please fill in all fields.</p>";
         }
     }
 }
