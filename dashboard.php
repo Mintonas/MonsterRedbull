@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 
-    <h1>Welcome to the Diddy club, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
+    <h1>Welcome to the MILITARY DRAFT, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
     <p><a href="logout.php" style="color: red; font-weight: bold;">(Log Out)</a></p>
     
     <hr>
@@ -87,7 +87,7 @@ while ($row = $result->fetch_assoc()) {
     echo "<b>Age:</b> " . htmlspecialchars($row["Ages"]) . "<br>";
     echo "<b>Foot Size:</b> " . htmlspecialchars($row["FootSize"]) . "<br>";
     echo "<b>Height:</b> " . htmlspecialchars($row["Height"]) . "<br>";
-    
+
     echo "</div>";
 }
 ?>
