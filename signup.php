@@ -22,7 +22,144 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         //empty makes sure that everything is filled in
         if (!empty($username) && !empty($password)) {
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+            // Username format validation
+            if (!preg_match('/^[A-Za-z0-9_]{3,20}$/', $username)) {
+                $message = "<p style='color:red;'>Username must be 3-20 characters and contain only letters, numbers, and underscores.</p>";
+            } else {
+        
+                // Convert common leetspeak to letters
+                $normalized = strtolower($username);
+        
+                $replacements = [
+                    '0' => 'o',
+                    '1' => 'i',
+                    '!' => 'i',
+                    '3' => 'e',
+                    '4' => 'a',
+                    '@' => 'a',
+                    '5' => 's',
+                    '$' => 's',
+                    '7' => 't'
+                ];
+        
+                $normalized = strtr($normalized, $replacements);
+                $normalized = preg_replace('/[^a-z]/', '', $normalized);
+        
+                // List of banned words
+                $bannedWords = [
+                    'fuck',
+                    'fucking',
+                    'motherfucker',
+                    'shit',
+                    'shitty',
+                    'bullshit',
+                    'bitch',
+                    'bitches',
+                    'asshole',
+                    'bastard',
+                    'dick',
+                    'dickhead',
+                    'cock',
+                    'cocksucker',
+                    'pussy',
+                    'cunt',
+                    'whore',
+                    'slut',
+                    'twat',
+                    'wanker',
+                    'prick',
+                
+                    'retard',
+                    'retarded',
+                    'idiot',
+                    'moron',
+                    'dumbass',
+                    'stupid',
+                    'loser',
+                
+                    'nigga',
+                    'nigger',
+                    'fag',
+                    'faggot',
+                
+                    'pedo',
+                    'pedophile',
+                    'rapist',
+                    'rape',
+                    'molester',
+                
+                    'terrorist',
+                    'hitler',
+                    'nazi',
+                
+                    'porn',
+                    'pornhub',
+                    'xvideos',
+                    'xnxx',
+                    'onlyfans',
+                    'sex',
+                    'sexy',
+                
+                    'kill',
+                    'killer',
+                    'murder',
+                    'murderer',
+                    'suicide',
+                
+                    'cum',
+                    'ejaculate',
+                    'penis',
+                    'vagina',
+                    'boobs',
+                    'tits',
+                    'testicles',
+                    'nutsack',
+                    'nutted',
+                
+                    'gaylord',
+                    'jackass',
+                    'dipshit',
+                    'douche',
+                    'douchebag',
+                    'scumbag',
+                    'pieceofshit'
+                
+                ];
+        
+                $containsBadWord = false;
+        
+                foreach ($bannedWords as $word) {
+                    if (strpos($normalized, $word) !== false) {
+                        $containsBadWord = true;
+                        break;
+                    }
+                }
+        
+                if ($containsBadWord) {
+                    $message = "<p style='color:red;'>Username contains inappropriate language.</p>";
+                } else {
+        
+                    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        
+                    $stmt = $conn->prepare(
+                        "INSERT INTO users (username, password) VALUES (?, ?)"
+                    );
+        
+                    $stmt->bind_param("ss", $username, $hashed_password);
+        
+                    try {
+                        if ($stmt->execute()) {
+                            $message = "<p style='color:green;'>Registration successful! <a href='login.php'>Login here</a></p>";
+                        }
+                    } catch (mysqli_sql_exception $e) {
+                        $message = "<p style='color:red;'>Username already taken. Try another one!</p>";
+                    }
+        
+                    $stmt->close();
+                }
+            }
+        }
 
             // ? - placeholder incase sql injection
             $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
