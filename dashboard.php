@@ -54,8 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 
-    <h1>Welcome to the club, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
-    <p><a href="logout.php" style="color: red; font-weight: bold;">Logga ut (Log Out)</a></p>
+    <h1>Welcome to the Diddy club, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
+    <p><a href="logout.php" style="color: red; font-weight: bold;">(Log Out)</a></p>
     
     <hr>
 
