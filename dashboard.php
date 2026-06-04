@@ -2,6 +2,7 @@
 
 session_start();
 
+//checks if you logged in (access control)
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
@@ -19,16 +20,18 @@ if ($conn->connect_error) {
 $message = ""; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //checking these fields
     if (isset($_POST["Rankings"], $_POST["Sizes"], $_POST["Names"], $_POST["Ages"])) {
-        
+        //reading user input
         $Rankings = trim($_POST["Rankings"]);
         $Sizes = trim($_POST["Sizes"]);
         $Names = trim($_POST["Names"]);
         $Ages = trim($_POST["Ages"]);
-
+        //validation 
         if (!empty($Rankings) && !empty($Sizes) && !empty($Names) && !empty($Ages)) {
-            
+            //Inserting info
             $stmt = $conn->prepare("INSERT INTO Listing (Rankings, Sizes, Names, Ages) VALUES (?, ?, ?, ?)");
+            //Binding values
             $stmt->bind_param("ssss", $Rankings, $Sizes, $Names, $Ages);
 
             if ($stmt->execute()) {

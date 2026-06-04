@@ -4,22 +4,29 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+//Connection to database
 $conn = new mysqli("localhost", "Mintonas", "Balionas", "Diddy_Club");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+//Turns into registration succesfull or username alr in use
 $message = "";
 
+//Isset checks if username alr in use
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['username'], $_POST['password'])) {
+        //trim removes spaces
         $username = trim($_POST['username']);
         $password = trim($_POST['password']);
 
+        //empty makes sure that everything is filled in
         if (!empty($username) && !empty($password)) {
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
+            // ? - placeholder incase sql injection
             $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+            //Attaches values to place holders (ss) for string
             $stmt->bind_param("ss", $username, $hashed_password);
 
             try {

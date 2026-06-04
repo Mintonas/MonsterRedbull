@@ -17,17 +17,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = trim($_POST['password']);
 
         if (!empty($username) && !empty($password)) {
+            //Looking for a user 
             $stmt = $conn->prepare("SELECT id, password FROM users WHERE username = ?");
+            //Binding the username
             $stmt->bind_param("s", $username);
             $stmt->execute();
             $result = $stmt->get_result();
 
             if ($user = $result->fetch_assoc()) {
+                //Verifying password with the hashed one
                 if (password_verify($password, $user['password'])) {
                     session_start();
                     $_SESSION['user_id'] = $user['id'];
                     $_SESSION['username'] = $username;
                     
+                    //redirection
                     header("Location: dashboard.php"); 
                     exit;
                 } else {
