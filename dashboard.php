@@ -75,5 +75,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="submit" value="Skicka">
     </form>
 
+    <hr>
+<h2>All Listings</h2>
+
+<?php
+$result = $conn->query("SELECT * FROM Listing ORDER BY id DESC");
+
+while ($row = $result->fetch_assoc()) {
+    echo "<div style='background:#f5f5f5; padding:10px; border-radius:10px; margin:10px'>";
+
+    echo "<b>Name:</b> " . htmlspecialchars($row["Names"]) . "<br>";
+    echo "<b>Age:</b> " . htmlspecialchars($row["Ages"]) . "<br>";
+    echo "<b>Rank:</b> " . htmlspecialchars($row["Rankings"]) . "<br>";
+    echo "<b>Size:</b> " . htmlspecialchars($row["Sizes"]) . "<br>";
+
+    echo "</div>";
+}
+?>
+
 </body>
 </html>

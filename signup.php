@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //empty makes sure that everything is filled in
         if (!empty($username) && !empty($password)) {
 
-            // Username format validation
+            // Username format validation and regEx
             if (!preg_match('/^[A-Za-z0-9_]{3,20}$/', $username)) {
                 $message = "<p style='color:red;'>Username must be 3-20 characters and contain only letters, numbers, and underscores.</p>";
             } else {
