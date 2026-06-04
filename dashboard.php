@@ -21,18 +21,18 @@ $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //checking these fields
-    if (isset($_POST["Rankings"], $_POST["Sizes"], $_POST["Names"], $_POST["Ages"])) {
+    if (isset($_POST["FootSize"], $_POST["Height"], $_POST["Names"], $_POST["Ages"])) {
         //reading user input
-        $Rankings = trim($_POST["Rankings"]);
-        $Sizes = trim($_POST["Sizes"]);
+        $FootSize = trim($_POST["FootSize"]);
+        $Height = trim($_POST["Height"]);
         $Names = trim($_POST["Names"]);
         $Ages = trim($_POST["Ages"]);
         //validation 
-        if (!empty($Rankings) && !empty($Sizes) && !empty($Names) && !empty($Ages)) {
+        if (!empty($FootSize) && !empty($Height) && !empty($Names) && !empty($Ages)) {
             //Inserting info
-            $stmt = $conn->prepare("INSERT INTO Listing (Rankings, Sizes, Names, Ages) VALUES (?, ?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO Listing (Names, Ages, FootSize, Height) VALUES (?, ?, ?, ?)");
             //Binding values
-            $stmt->bind_param("ssss", $Rankings, $Sizes, $Names, $Ages);
+            $stmt->bind_param("ssss", $Names, $Ages, $FootSize, $Height);
 
             if ($stmt->execute()) {
                 $message = "<p style='color: green;'>Data saved successfully!</p>";
@@ -66,11 +66,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php echo $message; ?>
 
     <form method="POST">
-        Namn: <input type="text" name="Names" required><br><br>
-        Ålder: <input type="text" name="Ages" required><br><br>
-        Rank: <input type="text" name="Rankings" required><br><br>
-        
-        Storlek: <input type="text" name="Sizes" required><br><br>
+        Name: <input type="text" name="Names" required><br><br>
+        Age: <input type="text" name="Ages" required><br><br>
+        Foot Size: <input type="text" name="FootSize" required><br><br>
+        Height: <input type="text" name="Height" required><br><br>
         
         <input type="submit" value="Skicka">
     </form>
@@ -86,9 +85,9 @@ while ($row = $result->fetch_assoc()) {
 
     echo "<b>Name:</b> " . htmlspecialchars($row["Names"]) . "<br>";
     echo "<b>Age:</b> " . htmlspecialchars($row["Ages"]) . "<br>";
-    echo "<b>Rank:</b> " . htmlspecialchars($row["Rankings"]) . "<br>";
-    echo "<b>Size:</b> " . htmlspecialchars($row["Sizes"]) . "<br>";
-
+    echo "<b>Foot Size:</b> " . htmlspecialchars($row["FootSize"]) . "<br>";
+    echo "<b>Height:</b> " . htmlspecialchars($row["Height"]) . "<br>";
+    
     echo "</div>";
 }
 ?>
